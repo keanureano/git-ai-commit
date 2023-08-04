@@ -4,8 +4,11 @@
 
 ## Introduction
 
-Python script that automatically generates commit messages based on git added files.
+Python script that automatically generates commit messages based on git added files. 
+It prompts the Hugging Face API service to summarize commit messages, based on git diff logs.
 The generated commit message can be accepted or modified before committing.
+
+`Side Note: Every commit in this repository has been auto-generated.`
 
 ## Usage Instructions
 
@@ -22,13 +25,13 @@ EMAIL="example@gmail.com"
 PASSWORD="example"
 ```
 
-3. Open up VS Code terminal and type
+3. Open up VS Code terminal and type:
 
 ```
 code $profile
 ```
 
-4. A text editor should pop up. Copy paste this function and replace `<FILE_PATH>`
+4. A text editor should pop up. Copy paste this function and replace `<FILE_PATH>`:
 
 ```
 function gac {
