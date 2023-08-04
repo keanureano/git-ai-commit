@@ -8,6 +8,7 @@ import subprocess
 def main():
     staged_diff_logs = git_diff()
     commit_message = generate_commit_message(staged_diff_logs)
+    git_commit(commit_message)
 
 
 def git_diff():
@@ -53,6 +54,20 @@ def generate_commit_message(staged_diff_logs):
             return commit_message
         else:
             continue
+
+
+def git_commit(message):
+    result = subprocess.run(
+        ["git", "commit", "-m", message],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+    )
+    if result.returncode == 0:
+        print(result.stdout)
+    else:
+        print(result.stderr)
+        return None
 
 
 if __name__ == "__main__":
