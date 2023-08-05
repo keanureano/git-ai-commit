@@ -36,8 +36,11 @@ def generate_commit_message(staged_diff_logs):
         chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
 
         prompt = f"""
-        Task: Generate a concise commit message based on the given Git diff logs.
-        Do not include any additional information or explanations. Only the command should be given.
+        Prompt: Summarize Git Diff Logs to Standardized Commit Messages
+        Description:
+        You are given a Git diff log, and your task is to summarize it into a standardized commit message following the conventional commit message style.
+        Each commit message should have a type (e.g., feat, fix, docs, refactor, test, chore, style, perf, ci, revert) followed by a colon and a description of the changes made in the commit.
+        You are not allowed to chat anything else except the commit message.
 
         Git diff logs:
         ```
