@@ -1,0 +1,3 @@
+[submodule "chatfreept"]
+	path = chatfreept
+	url = https://github.com/keanureano/chat-freept
