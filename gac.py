@@ -1,7 +1,7 @@
 import subprocess
 from chatfreept import ChatFreePT
 
-DEBUG = True
+HEADLESS = True
 
 GAC_PREFIX = "[gac] "
 
@@ -42,7 +42,7 @@ class PowerShellCLI:
 
 
 if __name__ == "__main__":
-    freept = ChatFreePT(headless=not DEBUG)
+    freept = ChatFreePT(headless=HEADLESS)
     cli = PowerShellCLI()
     diff_logs = cli.get_diff_logs()
 
