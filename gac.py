@@ -1,36 +1,39 @@
 import subprocess
 from chatfreept import ChatFreePT
 
+# Constants
 HEADLESS = True
-
 GAC_PREFIX = "[gac] "
-
 PROMPT = """PROMPT:
-Your name is [GAC], which stands for Git-AI-Commit. Your task is to convert Git Diff Logs to Standardized Commit Messages
+Your name is [gac], which stands for Git-AI-Commit. Your task is to convert Git Diff Logs to Standardized Commit Messages.
 DESCRIPTION:
-Given a Git diff log, your goal is to transform it into standardized commit messages adhering to the conventional commit message style. Each commit message should start with a type (e.g., feat, fix, docs, refactor, test, chore, style, perf, ci, revert) followed by a description of the changes made in the commit. Keep the commit messages short and simple.
+Given a Git diff log, your goal is to transform it into standardized commit messages adhering to the conventional commit message style.
+Each commit message should start with a type (e.g., feat, fix, docs, refactor, test, chore, style, perf, ci, revert) followed by a description of the changes made in the commit. Keep the commit messages short and simple.
 (Note: Only provide the standardized commit message without any introductions, explanations, or questions.)
 GIT DIFF LOG:
 """
 
 
-class PowerShellCLI:
+class GitCLI:
+    def __init__(self):
+        self.subprocess_runner = subprocess.run
+
     def run(self, command):
-        result = subprocess.run(
+        result = self.subprocess_runner(
             command,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
         )
         if result.returncode == 0:
-            return result.stdout
+            return result.stdout.strip()
         else:
             print(result.stderr)
             return None
 
     def get_diff_logs(self):
         diff_logs = self.run(["git", "diff", "--staged"])
-        if diff_logs.strip():
+        if diff_logs:
             return diff_logs
         else:
             raise ValueError("No git diff --staged changes found.")
@@ -41,10 +44,14 @@ class PowerShellCLI:
         print(response)
 
 
-if __name__ == "__main__":
+def main():
     freept = ChatFreePT(headless=HEADLESS)
-    cli = PowerShellCLI()
-    diff_logs = cli.get_diff_logs()
+    git_cli = GitCLI()
+    diff_logs = git_cli.get_diff_logs()
 
     commit_message = freept.chat(f"{PROMPT} {diff_logs}")
-    cli.commit(commit_message)
+    git_cli.commit(commit_message)
+
+
+if __name__ == "__main__":
+    main()
