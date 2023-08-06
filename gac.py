@@ -1,9 +1,10 @@
 import subprocess
 from chatfreept import ChatFreePT
 
-DEBUG = False
-WORD_COUNT_LIMIT = 1000
+DEBUG = True
+
 GAC_PREFIX = "[gac] "
+
 PROMPT = """PROMPT:
 Your name is [GAC], which stands for Git-AI-Commit. Your task is to convert Git Diff Logs to Standardized Commit Messages
 DESCRIPTION:
@@ -29,10 +30,10 @@ class PowerShellCLI:
 
     def get_diff_logs(self):
         diff_logs = self.run(["git", "diff", "--staged"])
-        if not diff_logs.strip():
+        if diff_logs.strip():
+            return diff_logs
+        else:
             raise ValueError("No git diff --staged changes found.")
-        diff_logs = " ".join(diff_logs.split()[:WORD_COUNT_LIMIT])
-        return diff_logs
 
     def commit(self, message):
         prefixed_message = f"{GAC_PREFIX}{message}"
