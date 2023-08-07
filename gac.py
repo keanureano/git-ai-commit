@@ -3,7 +3,7 @@ from chatfreept import ChatFreePT
 from sys import argv
 
 # Constants
-IS_DEBUG = "--debug" in argv
+IS_HEADLESS = "--headless" in argv
 GAC_PREFIX = "[gac] "
 PROMPT = """PROMPT:
 Your name is [gac], which stands for Git-AI-Commit. Your task is to convert Git Diff Logs to Standardized Commit Messages.
@@ -44,8 +44,8 @@ class GitCLI:
 
 
 def main():
-    print(f"Starting... --debug={IS_DEBUG}")
-    freept = ChatFreePT(debug=IS_DEBUG)
+    print(f"Starting... --headless={IS_HEADLESS}")
+    freept = ChatFreePT(headless=IS_HEADLESS)
     git_cli = GitCLI()
 
     print("Getting diff logs...")
