@@ -4,7 +4,7 @@ from sys import argv
 
 # Constants
 IS_DEBUG = "--debug" in argv
-MAX_DIFF_LOG_CHARACTER_COUNT = 2500
+MAX_DIFF_LOG_CHARACTER_COUNT = 4096
 GAC_PREFIX = "[gac] "
 PROMPT = """PROMPT:
 Your name is [gac], which stands for Git-AI-Commit. Your task is to convert Git Diff Logs to Standardized Commit Messages.
