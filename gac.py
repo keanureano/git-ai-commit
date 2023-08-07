@@ -58,7 +58,9 @@ def main():
     git_cli.commit(commit_message)
 
     if IS_DEBUG:
-        input()
+        input("Debug mode: Press enter to close...")
+
+    freept.close()
 
 
 if __name__ == "__main__":
