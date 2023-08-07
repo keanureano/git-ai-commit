@@ -1,8 +1,8 @@
 import subprocess
 from chatfreept import ChatFreePT
+from argparse import ArgumentParser
 
 # Constants
-HEADLESS = True
 GAC_PREFIX = "[gac] "
 PROMPT = """PROMPT:
 Your name is [gac], which stands for Git-AI-Commit. Your task is to convert Git Diff Logs to Standardized Commit Messages.
@@ -44,8 +44,16 @@ class GitCLI:
         print(response)
 
 
+def parse_arguments():
+    parser = ArgumentParser(description="Git-AI-Commit Script")
+    parser.add_argument("--debug", action="store_true", help="Enable debug mode")
+    return parser.parse_args()
+
+
 def main():
-    freept = ChatFreePT(headless=HEADLESS)
+    args = parse_arguments()
+    freept = ChatFreePT(headless=args.debug)
+    
     git_cli = GitCLI()
     diff_logs = git_cli.get_diff_logs()
 
