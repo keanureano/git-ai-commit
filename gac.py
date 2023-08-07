@@ -4,7 +4,6 @@ from sys import argv
 
 # Constants
 IS_DEBUG = "--debug" in argv
-MAX_DIFF_LOG_CHARACTER_COUNT = 4096
 GAC_PREFIX = "[gac] "
 PROMPT = """PROMPT:
 Your name is [gac], which stands for Git-AI-Commit. Your task is to convert Git Diff Logs to Standardized Commit Messages.
@@ -36,7 +35,7 @@ class GitCLI:
         diff_logs = self.run(["git", "diff", "--staged"])
         if not diff_logs:
             raise ValueError("No git diff --staged changes found.")
-        return diff_logs[:MAX_DIFF_LOG_CHARACTER_COUNT]
+        return diff_logs
 
     def commit(self, message):
         prefixed_message = f"{GAC_PREFIX}{message}"
@@ -57,6 +56,9 @@ def main():
 
     print("Committing...")
     git_cli.commit(commit_message)
+
+    if IS_DEBUG:
+        input()
 
 
 if __name__ == "__main__":
