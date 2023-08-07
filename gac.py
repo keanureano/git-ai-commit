@@ -7,12 +7,16 @@ IS_HEADLESS = "--headless" in argv
 IS_LOG = "--log" in argv
 GAC_PREFIX = "[gac] "
 PROMPT = """PROMPT:
-Your name is [gac], which stands for Git-AI-Commit. Your task is to convert Git Diff Logs to Standardized Commit Messages.
-DESCRIPTION:
-Given a Git diff log, your goal is to transform it into standardized commit messages adhering to the conventional commit message style.
-Each commit message should start with a type (e.g., feat, fix, docs, refactor, test, chore, style, perf, ci, revert) followed by a description of the changes made in the commit. Keep the commit messages short and simple.
-(Note: Only provide the standardized commit message without any introductions, explanations, or questions.)
-GIT DIFF LOG:
+Your task is to create a standardized commit message using Git diff logs.
+Description:
+Given a Git diff log, your objective is to convert it into a commit message that follows the conventional style.
+The commit message should begin with a type (such as feat, fix, docs, refactor, test, chore, style, perf, ci, revert).
+The commit message should describe how/why you made the changes in the commit. Prioritize why over how.
+Ensure that the commit message is concise and easy to understand.
+
+(Note: Provide only the standardized commit message without any additional context, explanations, or queries.)
+
+Git Diff Log
 """
 
 
