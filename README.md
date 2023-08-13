@@ -6,10 +6,11 @@ A Python script that uses my [ChatFreePT](https://chatfreept.example.com) API to
 
 ## Usage
 
-Run the script with the following command:
+Run the script with the following commands:
 
 ```bash
-python gac_script.py [--headless] [--log]
+git add <files>
+python gac.py [--headless] [--log]
 ```
 
 - `--headless`: Run the script in headless mode (optional).
