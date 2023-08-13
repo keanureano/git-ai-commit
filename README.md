@@ -1,5 +1,3 @@
-Here's a `readme.md` for the provided script:
-
 # Git Auto Commit (GAC) Script
 
 A Python script that uses my [ChatFreePT](https://chatfreept.example.com) API to generate standardized commit messages based on Git diff logs. The script then commits these messages to the repository.
