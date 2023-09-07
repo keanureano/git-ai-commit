@@ -1,6 +1,6 @@
 # Git Auto Commit (GAC) Script
 
-A Python script that uses my [ChatFreePT](https://chatfreept.example.com) API to generate standardized commit messages based on Git diff logs. The script then commits these messages to the repository.
+A Python script that uses my [ChatFreePT](https://github.com/keanureano/chat-freept) API to generate standardized commit messages based on Git diff logs. The script then commits these messages to the repository.
 
 ## Usage
 
@@ -30,7 +30,7 @@ The script interacts with the ChatFreePT API to generate commit messages based o
 ## Dependencies
 
 - Python (3.6+)
-- [ChatFreePT](https://chatfreept.example.com) API
+- [ChatFreePT](https://github.com/keanureano/chat-freept) API
 - Git
 
 ## Note
